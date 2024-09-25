@@ -1,0 +1,844 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Research hub.">
+      
+      
+        <meta name="author" content="ytimyno">
+      
+      
+        <link rel="canonical" href="https://ytimyno.github.io/blog/technical/pac/pac_on_rails/">
+      
+      
+        <link rel="prev" href="../../py_git_revshell/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+    
+    
+      
+        <title>PaC on Metadata - ytimyno</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pac-on-rails" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ytimyno" class="md-header__button md-logo" aria-label="ytimyno" data-md-component="logo">
+      
+  <img src="../../../../images/patriciar_crop.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ytimyno
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PaC on Metadata
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ytimyno/ytimyno.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytimyno.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ytimyno" class="md-nav__button md-logo" aria-label="ytimyno" data-md-component="logo">
+      
+  <img src="../../../../images/patriciar_crop.png" alt="logo">
+
+    </a>
+    ytimyno
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ytimyno/ytimyno.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytimyno.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../devsecops/protected_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pipelines and Protected Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../py_git_revshell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Weaponizing Open Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    PaC on Metadata
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    PaC on Metadata
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Policy Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-policy-format-container-images-traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Policy Format (Container Images &amp; Traditional IaC Infrastructure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extendable-csp-specific-configuration-traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extendable CSP-specific Configuration (Traditional IaC Infrastructure)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-advisory-before-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Advisory - Before Running
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Advisory - Before Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#malicious-check-1-user-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malicious Check 1 - User + SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malicious-check-2-infiltrate-exfiltrate-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malicious Check 2 - Infiltrate + Exfiltrate data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Images
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional IaC Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback &amp; Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Policy Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-policy-format-container-images-traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Policy Format (Container Images &amp; Traditional IaC Infrastructure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extendable-csp-specific-configuration-traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extendable CSP-specific Configuration (Traditional IaC Infrastructure)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-advisory-before-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Advisory - Before Running
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Advisory - Before Running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#malicious-check-1-user-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malicious Check 1 - User + SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#malicious-check-2-infiltrate-exfiltrate-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Malicious Check 2 - Infiltrate + Exfiltrate data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Images
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traditional-iac-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional IaC Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-contact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback &amp; Contact
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="pac-on-rails"><a href="https://github.com/ytimyno/pac-on-rails">pac-on-rails</a></h1>
+<blockquote>
+<p>The code, tests and research are available in the public repository <a href="https://github.com/ytimyno/pac-on-rails">pac-on-rails</a>, feel free to have a look and tailor to your needs. In here for completeness.</p>
+</blockquote>
+<p>Mini project to automate Policy as Code (PaC) and guardrails to ensure adherence to tagging/labelling policies. Supports Traditional IaC Infrastructure and Container Images.</p>
+<h2 id="policy-engine">Policy Engine</h2>
+<ul>
+<li>
+<p>The repository holds Checkov custom policies to perform checks against container images' labelling policies. The engine ensures compliance with the specified policy (see customisation section).</p>
+</li>
+<li>
+<p>The repository holds Checkov custom policies to perform checks against infrastructure metadata policies (Terraform-defined). The engine ensures compliance with the specified policy (see customisation section).</p>
+</li>
+</ul>
+<h3 id="metadata-policy-format-container-images-traditional-iac-infrastructure">Metadata Policy Format (Container Images &amp; Traditional IaC Infrastructure)</h3>
+<p>The tagging policy is defined using JSON format, allowing for flexible customisation of metadata pairs and their validation rules.</p>
+<pre><code class="language-json">{
+    &quot;maintainer&quot;: {
+        &quot;allowed_values&quot;: &quot;.*&quot;,
+        &quot;version&quot;: &quot;1.0&quot;,
+        &quot;description&quot;: &quot;A sample metadata pair - Any value accepted&quot;
+    },
+    &quot;maintainer_specific&quot;: {
+        &quot;allowed_values&quot;: &quot;^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$&quot;,
+        &quot;version&quot;: &quot;1.0&quot;,
+        &quot;description&quot;: &quot;A sample metadata pair - Specific regex&quot;
+    }
+}
+</code></pre>
+<h3 id="extendable-csp-specific-configuration-traditional-iac-infrastructure">Extendable CSP-specific Configuration (Traditional IaC Infrastructure)</h3>
+<p>Each cloud provider has its own configuration section within the engine. The JSON file lists specific configurations to take, according to the CSP. This is here, not only, but also because CSPs use different terms to refer to the same thing.</p>
+<p>This policy is currently applicable to Terraform resources. As you will find out, different providers, and even different resources within the same provider, use different attributes and attribute "paths" to apply metadata at different scopes. </p>
+<pre><code class="language-json">{
+  &quot;azure&quot;: {
+      &quot;keys&quot;: [
+          &quot;arm&quot;,
+          &quot;az&quot;,
+          &quot;azure&quot;,
+          &quot;azurerm&quot;
+      ],
+      &quot;description&quot;: &quot;Resources to check for metadata pairs (Azure). To override this, modify this file, leaving it in the working directory checkov runs from.&quot;,
+      &quot;supported_types&quot;: [
+          {
+              &quot;name&quot;: &quot;azurerm_kubernetes_cluster&quot;,
+              &quot;tag_paths&quot;: [
+                  {
+                      &quot;path&quot;: &quot;&quot;,
+                      &quot;attributes&quot;: {
+                          &quot;one_of&quot;: [],
+                          &quot;required&quot;: [
+                              {
+                                  &quot;name&quot;: &quot;tags&quot;,
+                                  &quot;cloud_native&quot;: false
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      &quot;path&quot;: &quot;default_node_pool&quot;,
+                      &quot;attributes&quot;: {
+                          &quot;one_of&quot;: [],
+                          &quot;required&quot;: [
+                              {
+                                  &quot;name&quot;: &quot;tags&quot;,
+                                  &quot;cloud_native&quot;: false
+                              }
+                          ]
+                      }
+                  }
+              ]
+          }
+      ]
+  }
+}
+</code></pre>
+<ul>
+<li><strong><code>csp</code></strong>: Configuration related to the CSP resources. Contains details on how to validate tags for that CSP infrastructure.</li>
+<li>
+<p><strong>Example Values</strong>: <code>azure</code>, <code>google</code>, <code>aws</code></p>
+</li>
+<li>
+<p><strong><code>keys</code></strong>: List of identifiers used to recognize CSP-related resources. These keywords help in identifying and applying the tagging policy to the correct resource types.</p>
+</li>
+<li>
+<p><strong>Example Values</strong>: <code>["arm", "az", "azure", "azurerm"]</code> or <code>["gcp", "google", "googlecloud"]</code></p>
+</li>
+<li>
+<p><strong><code>supported_types</code></strong>: List of CSP resource types targeted by the tagging policy. Each type includes specific tag paths and requirements.</p>
+</li>
+<li><strong>Example Values</strong>:<ul>
+<li><strong><code>name</code></strong>: The name of the resource type (e.g., <code>azurerm_kubernetes_cluster</code>).</li>
+<li><strong><code>tag_paths</code></strong>: List of paths within the resource where tags are validated.</li>
+<li><strong><code>path</code></strong>: Optional sub path eithin the resource configuration, leads to the tags attribute (e.g., <code>default_node_pool</code>).</li>
+<li><strong><code>attributes</code></strong>:<ul>
+<li><strong><code>one_of</code></strong>: At least one of these must be present (e.g., <code>tags</code>).</li>
+<li><strong><code>required</code></strong>: All these attributes must be present (e.g., <code>tags</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="customise">Customise</h2>
+<p>Customise with cloud_specific_configurations.json and policy.json as needed. Else, it will use a pre-def set of values. To customise a file, it needs to be in the dir where checkov runs from (see future work).</p>
+<h2 id="security-advisory-before-running">Security Advisory - Before Running</h2>
+<p>To use extra checks with Checkov CLI tool, we can:</p>
+<ol>
+<li>Specifying a directory with the extra checks' code, or</li>
+<li>Specifying a Git repo that contains the extra checks' code.</li>
+</ol>
+<p>I'd recommend (1). And if you ask me about number (2), I'd ensure the checks are from a private and/or very well scrutinised git repo. </p>
+<p>Checkov checks are really just running extra code:</p>
+<ul>
+<li>With custom Python checks, it's running custom Python scripts. </li>
+<li>With custom Python checks from a remote repo, it's running (potentially dangerous) custom Python scripts from a remote repo. </li>
+</ul>
+<p>Sky is the limit here. With or without root privileges, you can leave a mark. My advice is <strong>not to run extra checks unless the code has been reviewed and tested by yourself</strong> (you do have to do the work, the "it's fine, open source means it's safe because everyone can check it" solution has been proven <em>NOT to work</em>). This is true with any (especially open source) tool. </p>
+<p>That said, I feel the official Checkov documentation and GitHub pages could be clearer. The only place I could find that lightly touches on this is a small paragraph on best practices in the GitHub page (https://github.com/bridgecrewio/checkov?tab=readme-ov-file#configuration-using-a-config-file).</p>
+<p><strong><em>Update:</em></strong> Reached out to Palo Alto through their <a href="https://security.paloaltonetworks.com/report">security reports page</a>. Checkov documentation has been updated.</p>
+<h3 id="malicious-check-1-user-ssh">Malicious Check 1 - User + SSH</h3>
+<p>I done a simple PoC that creates a user, creates a files and runs bash commands. It also installs an openssh server in the machine running Checkov which we can connect to it, using the created user. Installs and user creation requires sudo priviledges, and connections may be harder with FW rules in place, but possibilities are endless, and I have seen loads of scary attacks on workloads. Particularly scary on the integrity side, as we can mess with the filesystem.</p>
+<pre><code>1. Try to SSH (not running, so I have connection refused)
+2. Run malicious check from remote git repo
+3. SSH with the newly created user
+</code></pre>
+<h3 id="malicious-check-2-infiltrate-exfiltrate-data">Malicious Check 2 - Infiltrate + Exfiltrate data</h3>
+<p>Take a step back, what would an attacker want?</p>
+<ul>
+<li>We have (almost arbitrary) command execution </li>
+<li>I guess we need a way to infiltrate/exfiltrate data!</li>
+</ul>
+<p>Queue <strong><em>CKV_COOL_MALI_2_CHECK</em></strong>. This check silently:</p>
+<ol>
+<li>Clones a remote repository (git clone)</li>
+<li>Creates a new branch* (git checkout)</li>
+<li>Creates a file with data about the system in the cloned repo directory (keep it simple for PoC, endless opportunities)</li>
+<li>Commits file to the .git tree (git add &amp; commit)</li>
+<li>Pushes to the Git repo (git push)</li>
+<li>Deletes traces of its activity (shutil.rmtree)</li>
+</ol>
+<p>*(because our attacker adheres to best practices and does not push to main ;) )</p>
+<p><strong>I wanted some kind of reverse shell, but was being slowed by some connection refused errors.</strong></p>
+<p><img alt="Who needs a reverse shell anyway..." src="../../../../images/no-revshell-no-problem.jpg" /></p>
+<h2 id="run">Run</h2>
+<h3 id="container-images">Container Images</h3>
+<p>checkov -d <em>containerfile_dir/</em> --external-checks-dir <em>checks/metadata/images</em> --framework dockerfile -c CKV_DOCKER_LABEL_CHECK</p>
+<h3 id="traditional-iac-infrastructure">Traditional IaC Infrastructure</h3>
+<p>checkov -d <em>terraform_dir/</em> --external-checks-dir <em>checks/metadata/infrastructure</em> -c CKV_TF_METADATA_CHECK </p>
+<h2 id="future-work">Future Work</h2>
+<ul>
+<li>Combine Checks: Explore combining Cloud-Native (CN) and traditional IaC checks into a unified metadata validation approach.</li>
+<li>Customize Input Paths: Customize the path to input files (policy.json, cloud_specific_configurations.json) for higher flexibility.</li>
+</ul>
+<h2 id="feedback-contact">Feedback &amp; Contact</h2>
+<p>For questions, feedback, bug reports, please use one of the below:</p>
+<ol>
+<li>
+<p><strong>GitHub Issues:</strong> Report bugs or request features on <a href="https://github.com/ytimyno/pac-on-rails/issues">GitHub Issues page</a>.</p>
+</li>
+<li>
+<p><strong>Email:</strong> For general feedback, you can email at <a href="mailto:ytimyno@gmail.com">ytimyno@gmail.com</a>.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
