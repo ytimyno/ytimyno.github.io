@@ -873,7 +873,7 @@ Agents, where the CI/CD processes run, may have access to credentials (digital c
 <p><img alt="Threat Model, Identity Proxies, ADO concepts" src="../../../images/tm_identityproxy.png" /></p>
 <h4 id="is-the-extra-complexity-in-the-ado-identity-proxy-model-a-good-thing">Is the extra complexity in the ADO Identity Proxy Model a good thing?</h4>
 <p>As with any architecture that starts having too many arrows and dependencies, concerns start arising. Implementing a system that ensures consistent identity representation across all layers becomes increasingly difficult.</p>
-<p>However, what is distinctive about this model, it allows us to implement those conditions of access. In fact, ADO, by separating pipelines from CI/CD Resources, provides one of the most effective methods I've seen for mediating access. This separation allows for the application of conditions and access controls that are specifically based on the access needs themselves, leading to a more adaptable framework.</p>
+<p>However, what is distinctive about this model is, it allows us to implement those conditions of access. In fact, ADO, by separating pipelines from CI/CD Resources, provides one of the most effective methods I've seen for mediating access. This separation allows for the application of conditions and access controls that are specifically based on the access needs themselves, leading to a more adaptable framework.</p>
 <h3 id="identity-proxy-conclusion">Identity Proxy Conclusion</h3>
 <p>The best approach seems to be addressing identity as closely as possible, which is the idea behind the <strong>Generic Identity Proxy Model</strong>. Currently, I'm not aware of existing solutions that fully support this concept. Therefore, let's focus on what we can implement today while gathering insights that inform longer-term strategies.</p>
 <h2 id="lifecycle">Lifecycle</h2>
@@ -890,7 +890,7 @@ Agents, where the CI/CD processes run, may have access to credentials (digital c
 <p><strong>Access Control</strong>: The expected entities (i.e.: pipeline) can read (or use) the resource if the defined policies are met.</p>
 </li>
 <li>
-<p><strong>Authorization</strong>: Creating, updating, reading, and deleting of resources is restricted to authorised entities, limiting what actions the entities may perform, including from where and when they can be performed.</p>
+<p><strong>Authorisation</strong>: Creating, updating, reading, and deleting of resources is restricted to authorised entities, limiting what actions the entities may perform, including from where and when they can be performed.</p>
 </li>
 <li>
 <p><strong>Auditability</strong>: Changes, access, creation, and deletion are auditable and guarantee non-repudiation.</p>
@@ -918,7 +918,7 @@ Agents, where the CI/CD processes run, may have access to credentials (digital c
 <h3 id="identity-aware-proxies">Identity Aware Proxies</h3>
 <p>I'm beginning to see the potential for extending and integrating this narrative beyond just CI/CD pipelines into other systems and platforms. This aligns with the concept of identity-aware proxies, where we can draw parallels to solutions like Google's Identity-Aware Proxy (IAP) and Microsoft Entra ID's Conditional Access. We've observed the introduction of <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity">Conditional Access for workload identities</a>, which suggests this could be a direction for us to explore. I plan to investigate this further, as it's a promising concept that resonates with me!</p>
 <h3 id="easier-said-than-done">Easier Said Than Done</h3>
-<p>Most organizations do not operate in a greenfield environment. Implementing certain checks may create ripples in existing processes. However, it's important to recognise that currently, your CI/CD resources may not be as protected as expected.</p>
+<p>Most organisations do not operate in a greenfield environment. Implementing certain checks may create ripples in existing processes. However, it's important to recognise that currently, your CI/CD resources may not be as protected as expected.</p>
 <h4 id="implementing-policy-which-policies-approvals-and-checks-should-you-use-and-how">Implementing Policy: Which policies, approvals and checks should you use? And how?</h4>
 <p>Note there are multiple (ADO-native) ways to protect CI/CD Resources. However, certain protections may require heavy refactoring of existing processes (e.g., extending templates), which might not be desirable.</p>
 <h4 id="crawl-walk-run-stop-the-rot-address-legacy-cicd-resources">Crawl, Walk, Run: Stop the rot + Address legacy CI/CD Resources</h4>
