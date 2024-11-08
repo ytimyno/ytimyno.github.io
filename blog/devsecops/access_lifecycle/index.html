@@ -816,7 +816,7 @@
 <p>Introducing the concept of an identity proxy opens up a path that encourages us to look beyond platform-specific controls - I recognise my Azure DevOps bias! By doing so, we can develop a more <strong>generic model</strong>, offering long-term benefits and adaptability, rather than being <a href="#ado-identity-proxy-model">confined to ADO-specific approaches</a>.</p>
 <p>This enables us to envision a platform-agnostic solution that meets our security and operational efficiency expectations.</p>
 <p><img alt="Identity Proxies, generic concept" src="../../../images/generic_identityproxy.png" /></p>
-<p>I will nevertheless, continue the ADO-specific analysis, as it allows for a quick(er) win.</p>
+<p>In this case, the credential <em>is</em> the CI/CD Resource. I will nevertheless, continue with an ADO-specific analysis, as it allows for a quick(er) win.</p>
 <h3 id="ado-identity-proxy-model">ADO Identity Proxy Model</h3>
 <p>Azure DevOps (ADO) natively segregates the pipeline from the CI/CD Resources (via service connections, agent pools, variable groups, secure files, etc). </p>
 <p><em>ADO CI/CD Resources</em> (like those used in a pipeline) often stand as a secondary representation of a credential. And, as we've seen, <em>credentials</em> are considered an identity proxy.  </p>
