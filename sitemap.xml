@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ytimyno.github.io/</loc>
-         <lastmod>2024-11-08</lastmod>
+         <lastmod>2024-11-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ytimyno.github.io/blog/devsecops/access_lifecycle/</loc>
-         <lastmod>2024-11-08</lastmod>
+         <lastmod>2024-11-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ytimyno.github.io/blog/devsecops/protected_resources/</loc>
-         <lastmod>2024-11-08</lastmod>
+         <lastmod>2024-11-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ytimyno.github.io/blog/technical/py_git_revshell/</loc>
-         <lastmod>2024-11-08</lastmod>
+         <lastmod>2024-11-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ytimyno.github.io/blog/technical/pac/pac_on_rails/</loc>
-         <lastmod>2024-11-08</lastmod>
+         <lastmod>2024-11-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

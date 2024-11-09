@@ -791,7 +791,7 @@
 
 
 <h1 id="identity-proxy-and-lifecycle">Identity Proxy and Lifecycle</h1>
-<p>The first post on the series looks at <a href="https://ytimyno.github.io/blog/devsecops/protected_resources">Pipelines and CI/CD Resources</a>. A pipeline boils down to a structured <em>set of instructions</em> and <em>its access to (CI/CD) resources</em>. Whereby these CI/CD Resources serve as a link to an underlying identity.</p>
+<p>The first post in the series looks at <a href="https://ytimyno.github.io/blog/devsecops/protected_resources">Pipelines and CI/CD Resources</a>. A pipeline boils down to a structured <em>set of instructions</em> and <em>its access to (CI/CD) resources</em>. Whereby these CI/CD Resources serve as a link to an underlying identity.</p>
 <p>Previously, I proposed setting an outcome-focused goal. Shifting from "ensuring every pipeline is secure" to "ensuring the access to CI/CD Resources is done under the right conditions". This constitutes multiple steps:</p>
 <ol>
 <li>
@@ -827,13 +827,13 @@
     <br>
 
 <p><strong>1. Agent Pools</strong>:
-Agents, where the CI/CD processes run, may have access to credentials (digital certificates, SSH keys, and other credential types). Access to an agent, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it has access to, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and access to services is done based on those credentials.</p>
+Agents, where the CI/CD processes run, may have access to credentials (digital certificates, SSH keys, and other credential types). Access to an agent, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it has access to, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and authorisation to services is done based on those credentials.</p>
 
-<p><strong>2. Service Connections</strong>: Service connections allow pipelines to interact with external services by using stored credentials (like tokens or API keys). Access to a service connection, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and access to services is done based on those credentials.</p> 
+<p><strong>2. Service Connections</strong>: Service connections allow pipelines to interact with external services by using stored credentials (like tokens or API keys). Access to a service connection, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and authorisation to services is done based on those credentials.</p> 
 
-<p><strong>3. Variable Groups</strong>: Variable groups hold sensitive values (e.g., passwords, keys) that pipelines use without direct access to the raw credentials. Access to a variable group, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and access to services is done based on those credentials.</p>
+<p><strong>3. Variable Groups</strong>: Variable groups hold sensitive values (e.g., passwords, keys) that pipelines use without direct access to the raw credentials. Access to a variable group, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and authorisation to services is done based on those credentials.</p>
 
-<p><strong>4. Secure Files</strong>: Secure files, such as certificates or keys, are referenced in pipelines without exposing their contents. Access to a secure file, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and access to services is done based on those credentials.</p>
+<p><strong>4. Secure Files</strong>: Secure files, such as certificates or keys, are referenced in pipelines without exposing their contents. Access to a secure file, a <strong>CI/CD Resource</strong>, means access to the <strong>credentials</strong> it stores, resulting in access to the <strong>identities</strong> those credentials proxy. Authentication and authorisation to services is done based on those credentials.</p>
 
 <p><strong>5. Repositories</strong>: Repositories are not as straightforward. One scenario to imagine is, if a GitOps process uses a repository as a source of truth, it means there is an external process monitoring the contents of that repository. That external process may have its own access to ensure the state between the repository and the runtime is synced. In this scenario, access to the repository could be seen, indirectly, as providing access to credentials used by the external processes.</p>
 
