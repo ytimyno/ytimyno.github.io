@@ -12,23 +12,25 @@
         <meta name="author" content="ytimyno">
       
       
-        <link rel="canonical" href="https://ytimyno.github.io/">
+        <link rel="canonical" href="https://ytimyno.github.io/blog/technical/cicd/exec_agents/">
       
       
+        <link rel="prev" href="../../../cicd/execution_agents/">
       
-        <link rel="next" href="blog/cicd/protected_resources/">
+      
+        <link rel="next" href="../../py_git_revshell/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
-        <title>ytimyno</title>
+        <title>Supply Chain x Build Agents - ytimyno</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8608ea7d.min.css">
       
       
 
@@ -47,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#research" class="md-skip">
+        <a href="#from-open-source-package-to-credential-exfiltration-from-your-build-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -82,9 +84,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="ytimyno" class="md-header__button md-logo" aria-label="ytimyno" data-md-component="logo">
+    <a href="../../../.." title="ytimyno" class="md-header__button md-logo" aria-label="ytimyno" data-md-component="logo">
       
-  <img src="images/patriciar_crop.png" alt="logo">
+  <img src="../../../../images/patriciar_crop.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Supply Chain x Build Agents
             
           </span>
         </div>
@@ -188,9 +190,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ytimyno" class="md-nav__button md-logo" aria-label="ytimyno" data-md-component="logo">
+    <a href="../../../.." title="ytimyno" class="md-nav__button md-logo" aria-label="ytimyno" data-md-component="logo">
       
-  <img src="images/patriciar_crop.png" alt="logo">
+  <img src="../../../../images/patriciar_crop.png" alt="logo">
 
     </a>
     ytimyno
@@ -214,29 +216,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -246,42 +229,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#research" class="md-nav__link">
-    <span class="md-ellipsis">
-      Research
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#playground" class="md-nav__link">
-    <span class="md-ellipsis">
-      Playground
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -329,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/cicd/protected_resources/" class="md-nav__link">
+      <a href="../../../cicd/protected_resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -351,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/cicd/access_lifecycle/" class="md-nav__link">
+      <a href="../../../cicd/access_lifecycle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -373,7 +320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/cicd/execution_agents/" class="md-nav__link">
+      <a href="../../../cicd/execution_agents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -399,17 +346,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -424,7 +373,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Playground
@@ -435,10 +384,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="blog/technical/cicd/exec_agents/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Supply Chain x Build Agents
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -448,6 +418,77 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -460,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/technical/py_git_revshell/" class="md-nav__link">
+      <a href="../../py_git_revshell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blog/technical/pac/pac_on_rails/" class="md-nav__link">
+      <a href="../../pac/pac_on_rails/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -521,6 +562,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -529,18 +572,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#research" class="md-nav__link">
+  <a href="#walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
-      Research
+      Walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #1
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step #3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#playground" class="md-nav__link">
+  <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      Playground
+      Conclusion
     </span>
   </a>
   
@@ -565,25 +641,52 @@
   
 
 
-  <h1>Home</h1>
-
-<p>I'm using this to share research done on my free time. Mixed with learnings from the day job and awesome people.</p>
+<h1 id="from-open-source-package-to-credential-exfiltration-from-your-build-environment">From open source package to credential exfiltration from your build environment</h1>
+<blockquote>
+<p>The problem statement and state of the art when it comes to the security of build environments is introduced in <a href="https://ytimyno.github.io/blog/execution_agents">CI/CD Execution Agents</a>. This is a practical walkthrough of a scenario using a trusted open source package to have access to the build environment and then exploit it.</p>
+</blockquote>
+<p>Sometimes it is hard to articulate the <em>why should I care about this</em>. This is a report on a hypothetical scenario where we have a trojanised open-source tool integrated in our build pipelines, and how that can be leveraged to exfiltrate data/credentials, persistence, lateral movement and Denial-of-Service/Wallet attacks. </p>
+<p>It consists of:</p>
+<ol>
+<li>Creating a malicious Open Source "extra check" for Checkov </li>
+<li>(Assumes the user decides to use that extra check fuctionality as there is a GitHub page that looks good enough)</li>
+<li>When the clitool is executed with the trojanised payload, it will silently attempt to exploit the host</li>
+</ol>
+<p>And the exploit shows this is possible:</p>
 <ul>
-<li>I'm a Cloud Security Engineer.</li>
-<li>I like automation and JSON.</li>
+<li>Pulling a 'malicious' packages from the outside</li>
+<li>Dumping environment variables (including the build service account 'temporary' access token)</li>
+<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
+<li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
 </ul>
-<p>Find me on socials @ytimyno or <a href="https://www.linkedin.com/in/patricia-rodrigues-cs/">Linkedin</a>.</p>
-<h2 id="research">Research</h2>
+<h2 id="walkthrough">Walkthrough</h2>
+<blockquote>
+<p><strong>Scenario</strong>: You have a goal. You need to ensure the resources in your development pipelines are being configured according to your policy. You find a GitHub project that does exactly what you need. This project is a fork of the widely used <a href="https://github.com/bridgecrewio/checkov">Checkov</a> project, which you already use anyway, but adds some useful custom checks.</p>
+</blockquote>
+<p>This is not a new scenario (reused from an earlier article), but it's just as plausible. Alternatively, this could be done by creating any 'useful' CLI tool. I like this scenario because Checkov itself is already trusted and expected to be ran in pipelines, and all we are doing is adding an extension to its out-of-the-box functionality.</p>
+<h3 id="step-1">Step #1</h3>
+<p>When running Checkov checks (custom or not), you are running code, in your environment, with all the permissions the user runinng it has. We will extend the malicious checks in <a href="https://github.com/ytimyno/pac-on-rails/blob/main/checks/malicious">the pac-on-rails GitHub repository</a> to have an additional a malicious check (COOL_MALI_3) that takes advantage of the access to the underlying build agent.</p>
+<h3 id="step-2">Step #2</h3>
+<p>Assuming the user found this project, read the README, which made it look like any other useful open source CLI tool hosted on GitHub, the user adds a simple switch to the pipeline.
+The user runs the pipeline and gets the desired result.</p>
+<h3 id="step-3">Step #3</h3>
+<p>When the pipeline was run, alongside the useful functionality, the trojanised payload also executed and we are to confirm all our objectives were met.</p>
 <ul>
-<li><a href="blog/cicd/protected_resources/">Resources &amp; Pipelines</a></li>
-<li><a href="blog/cicd/protected_resources/">Resource Lifecycle</a></li>
-<li><a href="blog/cicd/execution_agents/">Execution Agents</a></li>
+<li>Pulling 'malicious' packages from the outside</li>
+<li>Dumping environment variables (including the build service account 'temporary' access token)</li>
+<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
+<li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
 </ul>
-<h2 id="playground">Playground</h2>
+<blockquote>
+<p><strong>ℹ️ More details will be added soon.</strong></p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>Only do this at home :)</p>
+<h1 id="other-not-so-interesting-facts">Other (not so) interesting facts</h1>
 <ul>
-<li><a href="blog/technical/cicd/exec_agents/">From open source package to credential exfiltration from your build environment</a></li>
-<li><a href="blog/technical/py_git_revshell/">Weaponizing Open Source</a></li>
-<li><a href="blog/technical/pac/pac_on_rails/">PaC on Metadata</a></li>
+<li>Running containarised jobs and tasks in pipelines makes the initialisation of the pipeline workflows take anytime from quick to an annoying amount of time depending on the availability of the images required being already in the build agent.</li>
+<li>The build agent access token is not invalidated after each run. A new one is generated, but the old one stays active (for some time).</li>
+<li>Windows Defender definetely recognised obvious payloads from Metasploit :D</li>
 </ul>
 
 
@@ -631,10 +734,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   </body>
