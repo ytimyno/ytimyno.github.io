@@ -26,7 +26,7 @@
     
     
       
-        <title>Execution Agents - ytimyno</title>
+        <title>Build Servers - ytimyno</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cicd-execution-agents" class="md-skip">
+        <a href="#cicd-build-servers" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Execution Agents
+              Build Servers
             
           </span>
         </div>
@@ -335,7 +335,7 @@
           
   
   <span class="md-ellipsis">
-    Execution Agents
+    Build Servers
     
   </span>
   
@@ -347,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    Execution Agents
+    Build Servers
     
   </span>
   
@@ -773,9 +773,9 @@
   
 
 
-<h1 id="cicd-execution-agents">CI/CD Execution Agents</h1>
+<h1 id="cicd-build-servers">CI/CD Build Servers</h1>
 <p>There's more to a CI/CD platform than these <a href="https://ytimyno.github.io/blog/protected_resources">recipes we call "pipelines"</a>. These recipes are instruction sets that define workflows and which resources are accessed. But these workflows need to run somewhere.</p>
-<p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Execution Agents</em>, where the pipeline is scheduled and executed.</p>
+<p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Build Servers</em>, where the pipeline is scheduled and executed.</p>
 <p>Mental Note 1: <strong>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some sort of compute</strong></p>
 <h2 id="what-does-the-work">What does the work</h2>
 <p>Diagrams can sometimes oversimplify details that mask the workings of a system in not so obvious ways. I've fallen into this trap before. It's easy to accept the status quo which seems to follow the SDLC overarching model of Design -&gt; Code -&gt; Build -&gt; Deploy -&gt; Run.</p>
@@ -794,7 +794,7 @@
 <h2 id="friendly-reminder">Friendly Reminder</h2>
 <p>CI/CD workflow activities involve interacting with resources, artifacts, workloads, data, services. Authentication as an identity needs to happen, and you'll need to have the right authorization in place. </p>
 <blockquote>
-<p>At some point, all the <strong><em>credentials that allow you to impersonate identities authorized to access resources will be accessible from the execution agent</em></strong>. </p>
+<p>At some point, all the <strong><em>credentials that allow you to impersonate identities authorized to access resources will be accessible from the build server</em></strong>. </p>
 <p>There is no magic behind it. The secrets, the SSH private key files, the tokens, the 'secretless authentication' files required to access a target, will all be where they can be used to perform the sequence of instructions (steps) that have been passed onto the agent.</p>
 </blockquote>
 <!-- > In other words: When running a pipeline, that pipeline needs to access something. Therefore it needs credentials. -->
@@ -807,7 +807,7 @@
 </ul>
 <p>Against different system components:</p>
 <ul>
-<li>CI/CD Platforms themselves (platform settings, resources hosted in the platform itself - i.e.: CI/CD platform settings around CI/CD resource and pipeline permissions and access control, such as repositories, credentials, execution agents)</li>
+<li>CI/CD Platforms themselves (platform settings, resources hosted in the platform itself - i.e.: CI/CD platform settings around CI/CD resource and pipeline permissions and access control, such as repositories, credentials, build servers)</li>
 <li>Execution environment (who can access the agent executing the workflow, with what level of privilege - i.e.: having direct access to the host running CI/CD workflows with superuser privileges)</li>
 <li>Runtime workloads (who/what can access the runtime workloads, how can they affect them, directly or indirectly - i.e.: the credentials used to access targets represent a specific level of privilege)</li>
 </ul>
@@ -818,7 +818,7 @@
 <p>Now is probably a good time to do some introspection on how robust your CI/CD access management is, across users, service accounts and pipelines, against the different system components. Because it'll only get harder.</p>
 </blockquote>
 <h2 id="scenarios-self-hosted-agents-in-azure-devops">Scenarios - Self-Hosted Agents in Azure DevOps</h2>
-<p>I played and recommend playing with self-hosted CI/CD execution agents to really grasp their power. If using Azure DevOps, the article <a href="https://www.cyberark.com/resources/threat-research-blog/a-security-analysis-of-azure-devops-job-execution">A Security Analysis of Azure DevOps Job Execution</a> is detailed enough to understand the job execution workflow.</p>
+<p>I played and recommend playing with self-hosted CI/CD build servers to really grasp their power. If using Azure DevOps, the article <a href="https://www.cyberark.com/resources/threat-research-blog/a-security-analysis-of-azure-devops-job-execution">A Security Analysis of Azure DevOps Job Execution</a> is detailed enough to understand the job execution workflow.</p>
 <p>It's cool to play, but the <em>so what</em> question comes along. How would someone even get onto the machine, especially when in an organization that has multiple layers of defense. Direct access to the build agent is needed - <strong><em>or is it?</em></strong> (- that was sarcastic, it's not needed).</p>
 <div style="display: flex; justify-content: center;">
   <table>
@@ -840,7 +840,7 @@
 <p>Once you have access to the build agent through any of the access vectors above - chaos!</p>
 <h3 id="insider-threat-or-insider-account-compromise">Insider Threat or Insider Account Compromise</h3>
 <p>Knowing a the typical developer/engineer needs (and has) access to run CI/CD workflows, this gives them access to build servers (agents). In this scenario, there is a valid user account that can access a build agent. </p>
-<p>We are <strong>not solely</strong> speaking via the traditional SSH connection into the build server machine/VM. Rather, <strong>access to the execution agent VM is a by-product</strong> of scheduling a pipeline.</p>
+<p>We are <strong>not solely</strong> speaking via the traditional SSH connection into the build server machine/VM. Rather, <strong>access to the build server VM is a by-product</strong> of scheduling a pipeline.</p>
 <blockquote>
 <p>"<em>Tasks run in an execution context, which is either the agent host or a container.</em>"</p>
 <p><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/target?view=azure-pipelines">Microsoft Learn - target definition</a></p>
@@ -867,7 +867,7 @@
   - script: echo &quot;Running job on target host&quot;
     target: host
 </code></pre>
-<p>This means, if we want access to the execution agent host VM, all we need to do is <em>not</em> specify a container to run the job on or explicitly setting the target as being the <em>host</em>. Additionally, when running within a container, we're likely to be able to access the host via the Docker socket running in <code>/var/run/docker.sock</code>.</p>
+<p>This means, if we want access to the build server host VM, all we need to do is <em>not</em> specify a container to run the job on or explicitly setting the target as being the <em>host</em>. Additionally, when running within a container, we're likely to be able to access the host via the Docker socket running in <code>/var/run/docker.sock</code>.</p>
 <blockquote>
 <p>Ability to influence the pipeline configuration/definition means you can influence <strong>what/where/when</strong> it gets executed. And there are many ways to influence how a pipeline runs its course (<a href="../../technical/cicd/pipeline_influencer/">some more obvious than others</a>).</p>
 </blockquote>
@@ -876,7 +876,7 @@
 <p>Guess what! Using "Virtual Machine Scale Set" option for you Azure DevOps build agent pool comes with default configuration scripts. And guess what users you get by default?</p>
 <p>No, you're not root. That would go against basic Linux best practices! Instead, if you're following the standard set up, you will have an <em>AzDevOps</em> user account which happens to be able to <em>run any command as any user with sudo without being prompted for a password</em>.</p>
 <p><img alt="AzDevOps user permissions" src="../../../images/all_nopw.png" /></p>
-<p>Mental Note 3: <strong>Likely the identity used to run the pipeline workflow process has superuser privileges on the execution agent</strong></p>
+<p>Mental Note 3: <strong>Likely the identity used to run the pipeline workflow process has superuser privileges on the build server</strong></p>
 <blockquote>
 <p>Do note this is easy to complain about, and harder to fix. We have to keep in mind security is not the end goal with this systems. That said, try to at least have compensating controls.</p>
 </blockquote>
@@ -908,7 +908,7 @@
 <h3 id="sharing-templates-a-github-actions-tale">Sharing Templates (a GitHub Actions tale)</h3>
 <p>To exemplify this is really not just an Azure Devops thing, consider the same concepts in GitHub:</p>
 <ul>
-<li>ADO Build Agents ~= GitHub Runners (CI/CD execution agents)</li>
+<li>ADO Build Agents ~= GitHub Runners (CI/CD build servers)</li>
 <li>ADO Pipelines ~= Workflows (pipelines)</li>
 <li>ADO Jobs/Steps ~= Jobs/Actions (package of work scheduled in a runner)</li>
 <li>ADO Extensions ~= Marketplace GitHub Actions (ways to extend pipeline capabilities with ready made, pre-defined tasks)</li>
@@ -939,14 +939,14 @@
 <h2 id="impact">Impact</h2>
 <p>Depending on how the build agents are shared, their lifecycle and network restrictions applied, we can think of a few stories. Examples with some knowledge of the environment:</p>
 <ul>
-<li>I want to exfiltrate data/intellectual property from my enterprise laptop. Email/endpoint DLP controls are in place and actions are easily tied back to me. So I use the enterprise CI/CD Platform to schedule a workflow on execution agent to exfiltrate (all/any) data.</li>
-<li>I want to have a cryptomining agent running in an execution agent. I know there are specific detection mechanisms for this, so I use the enterprise CI/CD Platform to schedule a workflow on an execution agent that (1) switches off security tooling, (2) downloads the cryptomining payload and (3) launches the mining client. The process is running in the background, and it persists even after the workflow is finished.</li>
+<li>I want to exfiltrate data/intellectual property from my enterprise laptop. Email/endpoint DLP controls are in place and actions are easily tied back to me. So I use the enterprise CI/CD Platform to schedule a workflow on build server to exfiltrate (all/any) data.</li>
+<li>I want to have a cryptomining agent running in an build server. I know there are specific detection mechanisms for this, so I use the enterprise CI/CD Platform to schedule a workflow on an build server that (1) switches off security tooling, (2) downloads the cryptomining payload and (3) launches the mining client. The process is running in the background, and it persists even after the workflow is finished.</li>
 <li>Same as above, but I also know there is a policy to discard the agent after each workflow is run, so I intentionally make the workflow take several hours so that the cryptomining process stays active.</li>
 </ul>
 <p>If I use any of the initial access vectors (compromised account, malicious insider, open source compromise), I could also:</p>
 <ul>
-<li>Establish persistence on CI/CD execution agents by spawning a privileged container on the host or initiating a reverse shell connection to my Command &amp; Control (C2) server. I use this to continuously monitor and exfiltrate data and credentials from the CI/CD execution agent.</li>
-<li>Establish persistence on CI/CD execution agents by modifying the DLL that defines the CI/CD execution agent service so that the trusted process is running (as expected), but it has been altered to exfiltrate data and credentials anytime a workflow is scheduled there.</li>
+<li>Establish persistence on CI/CD build servers by spawning a privileged container on the host or initiating a reverse shell connection to my Command &amp; Control (C2) server. I use this to continuously monitor and exfiltrate data and credentials from the CI/CD build server.</li>
+<li>Establish persistence on CI/CD build servers by modifying the DLL that defines the CI/CD build server service so that the trusted process is running (as expected), but it has been altered to exfiltrate data and credentials anytime a workflow is scheduled there.</li>
 <li>I turn off or tamper with security tooling that would allow detection, response and investigations.</li>
 </ul>
 <p>There are others. It's up to the imagination. Things that make it worse:</p>
@@ -958,9 +958,9 @@
 <h2 id="conclusion">Conclusion</h2>
 <p>Summary of mental notes:</p>
 <ol>
-<li>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some piece of compute (execution agents)</li>
+<li>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some piece of compute (build servers)</li>
 <li>Access to the host is easily obtained (directly or indirectly)</li>
-<li>Likely the identity used in the workflows has superuser privileges in the execution agent</li>
+<li>Likely the identity used in the workflows has superuser privileges in the build server</li>
 <li>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</li>
 <li>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</li>
 </ol>
