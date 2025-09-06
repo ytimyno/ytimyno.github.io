@@ -1,0 +1,1044 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Research hub.">
+      
+      
+        <meta name="author" content="ytimyno">
+      
+      
+        <link rel="canonical" href="https://ytimyno.github.io/blog/cicd/execution_agents/">
+      
+      
+        <link rel="prev" href="../access_lifecycle/">
+      
+      
+        <link rel="next" href="../../technical/cicd/exec_agents/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>Execution Agents - ytimyno</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cicd-execution-agents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ytimyno" class="md-header__button md-logo" aria-label="ytimyno" data-md-component="logo">
+      
+  <img src="../../../images/patriciar_crop.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ytimyno
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Execution Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ytimyno/ytimyno.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytimyno.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ytimyno" class="md-nav__button md-logo" aria-label="ytimyno" data-md-component="logo">
+      
+  <img src="../../../images/patriciar_crop.png" alt="logo">
+
+    </a>
+    ytimyno
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ytimyno/ytimyno.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ytimyno.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CI/CD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CI/CD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protected_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources & Pipelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access_lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Execution Agents
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Execution Agents
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      What does the work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What does the work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipelines-are-code-execution-on-the-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelines are code execution "on the left"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friendly-reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friendly Reminder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenarios-self-hosted-agents-in-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenarios - Self-Hosted Agents in Azure DevOps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenarios - Self-Hosted Agents in Azure DevOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insider-threat-or-insider-account-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insider Threat or Insider Account Compromise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insider Threat or Insider Account Compromise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theres-more-whoami" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theres more - $whoami
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-insider-threat-and-compromised-accounts-open-source-library-supply-chain-compromise-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond Insider Threat and Compromised Accounts: Open Source Library Supply Chain Compromise Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-templates-a-github-actions-tale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing Templates (a GitHub Actions tale)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-i-use-microsoft-hosted-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if I use Microsoft-hosted agents?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Playground
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Playground
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/cicd/exec_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Supply Chain x Build Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/py_git_revshell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Weaponizing Open Source
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/pac/pac_on_rails/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PaC on Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      What does the work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What does the work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipelines-are-code-execution-on-the-left" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelines are code execution "on the left"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friendly-reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friendly Reminder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenarios-self-hosted-agents-in-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenarios - Self-Hosted Agents in Azure DevOps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenarios - Self-Hosted Agents in Azure DevOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insider-threat-or-insider-account-compromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insider Threat or Insider Account Compromise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Insider Threat or Insider Account Compromise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theres-more-whoami" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theres more - $whoami
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-insider-threat-and-compromised-accounts-open-source-library-supply-chain-compromise-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond Insider Threat and Compromised Accounts: Open Source Library Supply Chain Compromise Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-templates-a-github-actions-tale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing Templates (a GitHub Actions tale)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-i-use-microsoft-hosted-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if I use Microsoft-hosted agents?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Impact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cicd-execution-agents">CI/CD Execution Agents</h1>
+<p>There's more to a CI/CD platform than these <a href="https://ytimyno.github.io/blog/protected_resources">recipes we call "pipelines"</a>. These recipes are instruction sets that define workflows and which resources are accessed. But these workflows need to run somewhere.</p>
+<p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Execution Agents</em>, where the workflow is executed.</p>
+<p>Mental Note 1: <strong>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some sort of compute</strong></p>
+<h2 id="what-does-the-work">What does the work</h2>
+<p>Diagrams can sometimes oversimplify details that mask the workings of a system in not so obvious ways. I've fallen into this trap before. It's easy to accept the status quo which seems to follow the SDLC overarching model of Design -&gt; Code -&gt; Build -&gt; Deploy -&gt; Run.</p>
+<p>Typical (classic) security controls, such as Endpoint Detection and Response (EDR), Data Loss Prevention (DLP), vulnerability scanning, etc, are largely applied to compute in the far ends of this process: User endpoints and running workloads. <strong>It's easy to forget what goes on in between.</strong></p>
+<p><img alt="Classic SDLC view" src="../../../images/classic_view_sdlc.png" /></p>
+<p>We shall challenge this view!</p>
+<h3 id="pipelines-are-code-execution-on-the-left">Pipelines are code execution "on the left"</h3>
+<p>Working with CI/CD pipelines for a while, we can start to see how a pipeline <strong><em>execution</em></strong> on a build agent should be treated as runtime, just like any other. With a few gotchas:</p>
+<ul>
+<li>Gotcha 1: Build and deploy environments have direct access to the environments you are deploying to</li>
+<li>Gotcha 2: Build and deploy environments are complex, with plenty of layers that make detection and attribution hard</li>
+<li>Gotcha 3: Build and deploy environments are less scrutenized and their criticality is often underestimated, compared to classic application or enterprise runtimes.</li>
+</ul>
+<p><img alt="Code execution of the left SDLC view" src="../../../images/shift_view_sdlc.png" /></p>
+<p>Here is how this combination of gotchas starts to make me twitch.</p>
+<h2 id="friendly-reminder">Friendly Reminder</h2>
+<p>CI/CD workflow activities involve interacting with resources, artifacts, workloads, data, services. Authentication as an identity needs to happen, and you'll need to have the right authorization in place. </p>
+<blockquote>
+<p>At some point, all the <strong><em>credentials that allow you to impersonate identities authorized to access resources will be accessible from the execution agent</em></strong>. </p>
+<p>There is no magic behind it. The secrets, the SSH private key files, the tokens, the 'secretless authentication' files required to access a target, will all be where they can be used to perform the sequence of instructions (steps) that have been passed onto the agent.</p>
+</blockquote>
+<!-- > In other words: When running a pipeline, that pipeline needs to access something. Therefore it needs credentials. -->
+
+<p>What makes this even more involved are the different identity layers:</p>
+<ul>
+<li>Pipeline identity</li>
+<li>Identities to access the CI/CD Platform (User/Service, whether local accounts, SaaS-managed or federated)</li>
+<li>Identities to access the target runtime workloads and services</li>
+</ul>
+<p>Against different system components:</p>
+<ul>
+<li>CI/CD Platforms themselves (platform settings, resources hosted in the platform itself - i.e.: CI/CD platform settings around CI/CD resource and pipeline permissions and access control, such as repositories, credentials, execution agents)</li>
+<li>Execution environment (who can access the agent executing the workflow, with what level of privilege - i.e.: having direct access to the host running CI/CD workflows with superuser privileges)</li>
+<li>Runtime workloads (who/what can access the runtime workloads, how can they affect them, directly or indirectly - i.e.: the credentials used to access targets represent a specific level of privilege)</li>
+</ul>
+<!-- A picture is worth more than a thousand words. -->
+
+<p>Because identity is everywhere, this quickly escalates to an <em>"unmanageable mess"</em>. Ultimately, without access, you're limited in what you can do in the environment. Humans be humans, and <strong><em>overtime the tendency is to converge into the path of least resistence.</em></strong></p>
+<blockquote>
+<p>Now is probably a good time to do some introspection on how robust your CI/CD access management is, across users, service accounts and pipelines, against the different system components. Because it'll only get harder.</p>
+</blockquote>
+<h2 id="scenarios-self-hosted-agents-in-azure-devops">Scenarios - Self-Hosted Agents in Azure DevOps</h2>
+<p>I played and recommend playing with self-hosted CI/CD execution agents to really grasp their power. If using Azure DevOps, the article <a href="https://www.cyberark.com/resources/threat-research-blog/a-security-analysis-of-azure-devops-job-execution">A Security Analysis of Azure DevOps Job Execution</a> is detailed enough to understand the job execution worflow.</p>
+<p>It's cool to play, but the <em>so what</em> question comes along. How would someone even get onto the machine, especially when in an organization that has multiple layers of defense. Direct access to the build agent is needed - <strong><em>or is it?</em></strong> (- that was sarcastic, it's not needed).</p>
+<div style="display: flex; justify-content: center;">
+  <table>
+    <thead>
+      <tr>
+        <th>Access Vectors</th>
+        <th>Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Insider threat<br>Compromised user account<br>Malicious or vulnerable binary/package (supply chain)</td>
+        <td>Data/secret exfiltration<br>Denial of Service/Wallet<br>Persistence/Lateral movement<br>Compromise of internal artefacts<br>Stop/tamper with security tooling</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Once you have access to the build agent through any of the access vectors above - chaos!</p>
+<h3 id="insider-threat-or-insider-account-compromise">Insider Threat or Insider Account Compromise</h3>
+<p>Knowing a the typical developer/engineer needs (and has) access to run CI/CD workflows, this gives them access to build servers (afents). In this scenario, there is a valid user account that can access a build agent. </p>
+<p>We are <strong>not solely</strong> speaking via the traditional SSH connection into the build server machine/VM. Rather, <strong>access to the execution agent VM is a by-product</strong> of scheduling a pipeline.</p>
+<blockquote>
+<p>"<em>Tasks run in an execution context, which is either the agent host or a container.</em>"</p>
+<p><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/target?view=azure-pipelines">Microsoft Learn - target definition</a></p>
+</blockquote>
+<p>This YAML snippet is telling the Azure Pipelines service to run the job directly on the target host. It is the default mode.</p>
+<pre><code class="language-yaml">jobs:
+- job: RunOnTargetHost
+  steps:
+  - script: echo &quot;Running job on target host&quot;
+</code></pre>
+<p>This YAML snippet is telling the Azure Pipelines service to run the job in a container on the host.</p>
+<pre><code class="language-yaml">jobs:
+- job: RunOnTargetContainer
+  container: python
+  steps:
+  - script: echo &quot;Running in job container&quot;
+</code></pre>
+<p>This YAML snippet is telling the Azure Pipelines service to run the job in a container on the host, with the second step targeting the host.</p>
+<pre><code class="language-yaml">jobs:
+- job: RunOnTargetContainer
+  container: python
+  steps:
+  - script: echo &quot;Running in job container&quot;
+  - script: echo &quot;Running job on target host&quot;
+    target: host
+</code></pre>
+<p>This means, if we want access to the execution agent host VM, all we need to do is <em>not</em> specify a container to run the job on or explicitly setting the target as being the <em>host</em>. Additionally, when running within a container, we're likely to be able to access the host via the Docker socket running in <code>/var/run/docker.sock</code>.</p>
+<blockquote>
+<p>Ability to influence the pipeline configuration/definition means you can influence <strong>what/where/when</strong> it gets executed. And there are many ways to influence how a pipeline runs its course (<a href="../../technical/cicd/pipeline_influencer/">some more obvious than others</a>).</p>
+</blockquote>
+<p>Mental Note 2: <strong>Access to the host is easily obtained (directly or indirectly)</strong></p>
+<h4 id="theres-more-whoami">Theres more - $whoami</h4>
+<p>Guess what! Using "Virtual Machine Scale Set" option for you Azure DevOps build agent pool comes with default configuration scripts. And guess what users you get by default?</p>
+<p>No, you're not root. That would go against basic Linux best practices! Instead, if you're following the standard set up, you will have an <em>AzDevOps</em> user account which happens to be able to <em>run any command as any user with sudo without being prompted for a password</em>.</p>
+<p><img alt="AzDevOps user permissions" src="../../../images/all_nopw.png" /></p>
+<p>Mental Note 3: <strong>Likely the identity used to run the pipeline workflow process has superuser privileges on the execution agent</strong></p>
+<blockquote>
+<p>Do note this is easy to complain about, and harder to fix. We have to keep in mind security is not the end goal with this systems. That said, try to at least have compensating controls.</p>
+</blockquote>
+<h3 id="beyond-insider-threat-and-compromised-accounts-open-source-library-supply-chain-compromise-scenario">Beyond Insider Threat and Compromised Accounts: Open Source Library Supply Chain Compromise Scenario</h3>
+<blockquote>
+<p>Insider threats and compromised accounts aren't the only ways to get access to the build environment. </p>
+</blockquote>
+<p>The risks and complexities of running unvetted code - especially in the open-source world - are often overlooked or underestimated. There are consequences to blindly integrating external code into a system.</p>
+<p>We've seen how there are escalation points allowing access to the underlying host with a super user, directly and indirectly:</p>
+<ul>
+<li>If runing a job directly on the build agent host </li>
+<li>Even if running a container job, accessing the host indirectly (i.e: via the docker socket) </li>
+</ul>
+<p>Sometimes it is hard to articulate the <em>why should I care about this</em>. Consider this hypotethical scenario that shows how a trusted tool (CLI tool Checkov) being used in a pipeline with an unexpected extension of capability (command line argument/switch) that carries a <em>trojanised payload</em>. </p>
+<p>That is available here -&gt; <a href="https://ytimyno.github.io/blog/technical/exec_agents">From open source package to credential exfiltration from your build environment</a>. It walks through the steps:</p>
+<ol>
+<li>Creating a malicious Open Source "extra check" for Checkov </li>
+<li>(Assumes the user decides to use that extra check fuctionality as there is a GitHub page that looks good enough)</li>
+<li>When the clitool is executed with the trojanised payload, it will silently attempt to exploit the host</li>
+</ol>
+<p>Exploit shows:</p>
+<ul>
+<li>Pulling a 'malicious' packages from the outside</li>
+<li>Dumping environment variables (including the build service account 'temporary' access token)</li>
+<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
+<li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
+</ul>
+<p>Mental Note 4: <strong>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</strong></p>
+<h3 id="sharing-templates-a-github-actions-tale">Sharing Templates (a GitHub Actions tale)</h3>
+<p>To exemplify this is really not just an Azure Devops thing, consider the same concepts in GitHub:</p>
+<ul>
+<li>ADO Build Agents ~= GitHub Runners (CI/CD execution agents)</li>
+<li>ADO Pipelines ~= Workflows (pipelines)</li>
+<li>ADO Jobs/Steps ~= Jobs/Actions (package of work scheduled in a runner)</li>
+<li>ADO Extensions ~= Marketplace GitHub Actions (ways to extend pipeline capabilities with ready made, pre-defined tasks)</li>
+</ul>
+<p>GitHub Action templates are frequently shared (more frequent than with Azure DevOps pipeline templates or even Azure DevOps extensions, in my experience). This may be a by-product of the community around it and their simplicity. These actions and capability extensions should always be treated as untrusted unless proven otherwise (it's just more code written by someone else).</p>
+<p>Mental Note 5: <strong>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</strong></p>
+<h3 id="what-if-i-use-microsoft-hosted-agents">What if I use Microsoft-hosted agents?</h3>
+<p>Running the chance of getting my security badge revoked: I don't dislike Microsoft-hosted agents all the time. There are use cases for them. And I have gone as fair as saying "<em>Microsoft-hosted build agents are likely more 'secure' than inadequately managed self-hosted agents</em>".</p>
+<blockquote>
+<p>It's <strong>hard</strong> to manage build agents in a balanced (adequate) way - secure, cost-efficient and performant way.</p>
+</blockquote>
+<p>Reasons to like Microsoft-Hosted:</p>
+<ul>
+<li>No management required (managed by MS)</li>
+<li>Each job runs on a fresh VM that gets destroyed by the end (harder to cross contaminate)</li>
+<li>Sits outside your infrastructure, reducing the likelihood of persistence/lateral movement</li>
+<li>Work great as a sandbox for untrusted code workflows </li>
+</ul>
+<p>Reasons not to like them:</p>
+<ul>
+<li>Significant DLP risk, and, because enterprise tooling (DLP/EDR) is not deployed, low or minimal observability over agents</li>
+<li>May not fit all use cases (specific builds, private network access to internal networks)</li>
+<li>Enterprise workflows may exceed MS license limits</li>
+<li>Inability to heavily monitor the agents</li>
+</ul>
+<p>You may be able to bypass any DLP/networking controls by leveraging a combination of self-hosted agents + build artifacts + Microsoft build agents, in this order. </p>
+<p>Example: Use a self-hosted build agent to access a restricted resource in your environment with a pipeline execution, publish artefacts with data you were able to extract, and then use a Microsoft-hosted build agent to exfiltrate those pipeline artefacts.</p>
+<h2 id="impact">Impact</h2>
+<p>Depending on how the build agents are shared, their lifecycle and network restrictions applied, we can think of a few stories. Examples with some knowdledge of the environment:</p>
+<ul>
+<li>I want to exfiltrate data/intellectual property from my enterprise laptop. Email/endpoint DLP controls are in place and actions are easily tied back to me. So I use the enterprise CI/CD Platform to schedule a worflow on execution agent to exfiltrate (all/any) data.</li>
+<li>I want to have a cryptomining agent running in an execution agent. I know there are specific detection mechanisms for this, so I use the enterprise CI/CD Platform to schedule a workflow on an execution agent that (1) switches off security tooling, (2) downloads the cryptomining payload and (3) launches the mining client. The process is running in the background, and it persists even after the workflow is finished.</li>
+<li>Same as above, but I also know there is a policy to discard the agent after each workflow is run, so I intentionally make the workflow take several hours so that the cryptomining process stays active.</li>
+</ul>
+<p>If I use any of the initial access vectors (compromised account, malicious insider, open source compromise), I could also:</p>
+<ul>
+<li>Establish persistence on CI/CD execution agents by spawning a privileged container on the host or initiating a reverse shell connection to my Command &amp; Control (C2) server. I use this to continuously monitor and exfiltrate data and credentials from the CI/CD execution agent.</li>
+<li>Establish persistence on CI/CD execution agents by modifying the DLL that defines the CI/CD execution agent service so that the trusted process is running (as expected), but it has been altered to exfiltrate data and credentials anytime a worflow is scheduled there.</li>
+<li>I turn off or tamper with security tooling that would allow detection, response and investigations.</li>
+</ul>
+<p>There are others. It's up to the imagination. Things that make it worse:</p>
+<ul>
+<li>Unconstrained internet access</li>
+<li>Not segregating production from non production</li>
+<li>Long lived build agents</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Summary of mental notes:</p>
+<ol>
+<li>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some piece of compute (execution agents)</li>
+<li>Access to the host is easily obtained (directly or indirectly)</li>
+<li>Likely the identity used in the workflows has superuser privileges in the execution agent</li>
+<li>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</li>
+<li>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</li>
+</ol>
+<p>If you have not gotten got until today, what are the chances you'll get got tomorrow? Well, I couldn't find a reason for this not to be in use today, but I could be missing something. </p>
+<p>In many ways, I feel many platforms already 'got got' (to quote Securiy Weekly News' Doug White). If I was a hacker, I'd be putting my eggs in this basket. </p>
+<table>
+<thead>
+<tr>
+<th><strong>Key Consideration</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shared across teams x target environments</td>
+<td>Sharing agents is tricky - Granularity usually means more operational/management effort. But, coarse level of segregation is better than none (production/non-production; trusted/non-trusted)</td>
+</tr>
+<tr>
+<td>Reused across pipeline runs</td>
+<td>Agents reused across runs may retain sensitive data or artifacts from previous executions. Self-hosted are recommended <strong>not only but also</strong> for performance associated with caching. Cleaning agents may reduce the appetite for self-hosted</td>
+</tr>
+<tr>
+<td>Network access control</td>
+<td>Access to package registries and target environments is required. Are these restricted to be accessed from private networks?</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
