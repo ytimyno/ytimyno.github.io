@@ -775,7 +775,7 @@
 
 <h1 id="cicd-execution-agents">CI/CD Execution Agents</h1>
 <p>There's more to a CI/CD platform than these <a href="https://ytimyno.github.io/blog/protected_resources">recipes we call "pipelines"</a>. These recipes are instruction sets that define workflows and which resources are accessed. But these workflows need to run somewhere.</p>
-<p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Execution Agents</em>, where the workflow is executed.</p>
+<p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Execution Agents</em>, where the pipeline is scheduled and executed.</p>
 <p>Mental Note 1: <strong>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some sort of compute</strong></p>
 <h2 id="what-does-the-work">What does the work</h2>
 <p>Diagrams can sometimes oversimplify details that mask the workings of a system in not so obvious ways. I've fallen into this trap before. It's easy to accept the status quo which seems to follow the SDLC overarching model of Design -&gt; Code -&gt; Build -&gt; Deploy -&gt; Run.</p>
@@ -964,8 +964,8 @@
 <li>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</li>
 <li>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</li>
 </ol>
-<p>If you have not 'gotten got' until today, what are the chances you'll 'get got' tomorrow? Well, I couldn't find a reason for this not to be in use today, but I could be missing something. </p>
 <p>In many ways, I feel many platforms already 'got got' (to quote Security Weekly News' Doug White). If I was a hacker, I'd be putting my eggs in this basket. </p>
+<p>If you have not 'gotten got' until today, what are the chances you'll 'get got' tomorrow? Well, I couldn't find a reason for this not to be in use today, but I could be missing something. </p>
 <table>
 <thead>
 <tr>
