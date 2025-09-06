@@ -777,16 +777,11 @@
 <p>There's more to a CI/CD platform than these <a href="https://ytimyno.github.io/blog/protected_resources">recipes we call "pipelines"</a>. These recipes are instruction sets that define workflows and which resources are accessed. But these workflows need to run somewhere.</p>
 <p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Build Servers</em>, where the pipeline is scheduled and executed.</p>
 <p>Mental Note 1: <strong>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some sort of compute</strong></p>
-<div style="display: flex; justify-content: center;">
-  <img src="../../images/magic.jpg" alt="Classic SDLC view" width="300"/>
-</div>
-
+<p><img alt="Pipeline Magic" src="../../images/magic.png" /></p>
 <h2 id="what-does-the-work">What does the work</h2>
 <p>Diagrams can sometimes oversimplify details that mask the workings of a system in not so obvious ways. I've fallen into this trap before. It's easy to accept the status quo which seems to follow the SDLC overarching model of Design -&gt; Code -&gt; Build -&gt; Deploy -&gt; Run.</p>
 <p>Typical (classic) security controls, such as Endpoint Detection and Response (EDR), Data Loss Prevention (DLP), vulnerability scanning, etc, are largely applied to compute in the far ends of this process: User endpoints and running workloads. <strong>It's easy to forget what goes on in between.</strong></p>
-<div style="display: flex; justify-content: center;">
-  <img src="../../images/classic_view_sdlc.png" alt="Classic SDLC view"/>
-</div>
+<p><img alt="Classic SDLC view" src="../../../images/classic_view_sdlc.png" /></p>
 <p>We shall challenge this view!</p>
 <h3 id="pipelines-are-code-execution-on-the-left">Pipelines are code execution "on the left"</h3>
 <p>Working with CI/CD pipelines for a while, we can start to see how a pipeline <strong><em>execution</em></strong> on a build agent should be treated as runtime, just like any other. With a few gotchas:</p>
@@ -795,10 +790,7 @@
 <li>Gotcha 2: Build and deploy environments are complex, with plenty of layers that make detection and attribution hard</li>
 <li>Gotcha 3: Build and deploy environments are less scrutinized and their criticality is often underestimated, compared to classic application or enterprise runtimes.</li>
 </ul>
-<div style="display: flex; justify-content: center;">
-  <img src="../../images/shift_view_sdlc.png" alt="Code execution of the left SDLC view"/>
-</div>
-
+<p><img alt="Code execution of the left SDLC view" src="../../../images/shift_view_sdlc.png" /></p>
 <p>Here is how this combination of gotchas starts to make me twitch.</p>
 <h2 id="friendly-reminder">Friendly Reminder</h2>
 <p>CI/CD workflow activities involve interacting with resources, artifacts, workloads, data, services. Authentication as an identity needs to happen, and you'll need to have the right authorization in place. </p>
