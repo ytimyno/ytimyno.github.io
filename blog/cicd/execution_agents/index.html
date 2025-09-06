@@ -787,7 +787,7 @@
 <ul>
 <li>Gotcha 1: Build and deploy environments have direct access to the environments you are deploying to</li>
 <li>Gotcha 2: Build and deploy environments are complex, with plenty of layers that make detection and attribution hard</li>
-<li>Gotcha 3: Build and deploy environments are less scrutenized and their criticality is often underestimated, compared to classic application or enterprise runtimes.</li>
+<li>Gotcha 3: Build and deploy environments are less scrutinized and their criticality is often underestimated, compared to classic application or enterprise runtimes.</li>
 </ul>
 <p><img alt="Code execution of the left SDLC view" src="../../../images/shift_view_sdlc.png" /></p>
 <p>Here is how this combination of gotchas starts to make me twitch.</p>
@@ -813,12 +813,12 @@
 </ul>
 <!-- A picture is worth more than a thousand words. -->
 
-<p>Because identity is everywhere, this quickly escalates to an <em>"unmanageable mess"</em>. Ultimately, without access, you're limited in what you can do in the environment. Humans be humans, and <strong><em>overtime the tendency is to converge into the path of least resistence.</em></strong></p>
+<p>Because identity is everywhere, this quickly escalates to an <em>"unmanageable mess"</em>. Ultimately, without access, you're limited in what you can do in the environment. Humans be humans, and <strong><em>overtime the tendency is to converge into the path of least resistance.</em></strong></p>
 <blockquote>
 <p>Now is probably a good time to do some introspection on how robust your CI/CD access management is, across users, service accounts and pipelines, against the different system components. Because it'll only get harder.</p>
 </blockquote>
 <h2 id="scenarios-self-hosted-agents-in-azure-devops">Scenarios - Self-Hosted Agents in Azure DevOps</h2>
-<p>I played and recommend playing with self-hosted CI/CD execution agents to really grasp their power. If using Azure DevOps, the article <a href="https://www.cyberark.com/resources/threat-research-blog/a-security-analysis-of-azure-devops-job-execution">A Security Analysis of Azure DevOps Job Execution</a> is detailed enough to understand the job execution worflow.</p>
+<p>I played and recommend playing with self-hosted CI/CD execution agents to really grasp their power. If using Azure DevOps, the article <a href="https://www.cyberark.com/resources/threat-research-blog/a-security-analysis-of-azure-devops-job-execution">A Security Analysis of Azure DevOps Job Execution</a> is detailed enough to understand the job execution workflow.</p>
 <p>It's cool to play, but the <em>so what</em> question comes along. How would someone even get onto the machine, especially when in an organization that has multiple layers of defense. Direct access to the build agent is needed - <strong><em>or is it?</em></strong> (- that was sarcastic, it's not needed).</p>
 <div style="display: flex; justify-content: center;">
   <table>
@@ -831,7 +831,7 @@
     <tbody>
       <tr>
         <td>Insider threat<br>Compromised user account<br>Malicious or vulnerable binary/package (supply chain)</td>
-        <td>Data/secret exfiltration<br>Denial of Service/Wallet<br>Persistence/Lateral movement<br>Compromise of internal artefacts<br>Stop/tamper with security tooling</td>
+        <td>Data/secret exfiltration<br>Denial of Service/Wallet<br>Persistence/Lateral movement<br>Compromise of internal artifacts<br>Stop/tamper with security tooling</td>
       </tr>
     </tbody>
   </table>
@@ -839,7 +839,7 @@
 
 <p>Once you have access to the build agent through any of the access vectors above - chaos!</p>
 <h3 id="insider-threat-or-insider-account-compromise">Insider Threat or Insider Account Compromise</h3>
-<p>Knowing a the typical developer/engineer needs (and has) access to run CI/CD workflows, this gives them access to build servers (afents). In this scenario, there is a valid user account that can access a build agent. </p>
+<p>Knowing a the typical developer/engineer needs (and has) access to run CI/CD workflows, this gives them access to build servers (agents). In this scenario, there is a valid user account that can access a build agent. </p>
 <p>We are <strong>not solely</strong> speaking via the traditional SSH connection into the build server machine/VM. Rather, <strong>access to the execution agent VM is a by-product</strong> of scheduling a pipeline.</p>
 <blockquote>
 <p>"<em>Tasks run in an execution context, which is either the agent host or a container.</em>"</p>
@@ -884,24 +884,24 @@
 <blockquote>
 <p>Insider threats and compromised accounts aren't the only ways to get access to the build environment. </p>
 </blockquote>
-<p>The risks and complexities of running unvetted code - especially in the open-source world - are often overlooked or underestimated. There are consequences to blindly integrating external code into a system.</p>
+<p>The risks and complexities of running unvatted code - especially in the open-source world - are often overlooked or underestimated. There are consequences to blindly integrating external code into a system.</p>
 <p>We've seen how there are escalation points allowing access to the underlying host with a super user, directly and indirectly:</p>
 <ul>
-<li>If runing a job directly on the build agent host </li>
+<li>If running a job directly on the build agent host </li>
 <li>Even if running a container job, accessing the host indirectly (i.e: via the docker socket) </li>
 </ul>
-<p>Sometimes it is hard to articulate the <em>why should I care about this</em>. Consider this hypotethical scenario that shows how a trusted tool (CLI tool Checkov) being used in a pipeline with an unexpected extension of capability (command line argument/switch) that carries a <em>trojanised payload</em>. </p>
+<p>Sometimes it is hard to articulate the <em>why should I care about this</em>. Consider this hypothetical scenario that shows how a trusted tool (CLI tool Checkov) being used in a pipeline with an unexpected extension of capability (command line argument/switch) that carries a <em>trojanised payload</em>. </p>
 <p>That is available here -&gt; <a href="https://ytimyno.github.io/blog/technical/exec_agents">From open source package to credential exfiltration from your build environment</a>. It walks through the steps:</p>
 <ol>
 <li>Creating a malicious Open Source "extra check" for Checkov </li>
-<li>(Assumes the user decides to use that extra check fuctionality as there is a GitHub page that looks good enough)</li>
+<li>(Assumes the user decides to use that extra check functionality as there is a GitHub page that looks good enough)</li>
 <li>When the clitool is executed with the trojanised payload, it will silently attempt to exploit the host</li>
 </ol>
 <p>Exploit shows:</p>
 <ul>
 <li>Pulling a 'malicious' packages from the outside</li>
 <li>Dumping environment variables (including the build service account 'temporary' access token)</li>
-<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
+<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artifacts of every pipeline, from any project, that has being executed)</li>
 <li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
 </ul>
 <p>Mental Note 4: <strong>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</strong></p>
@@ -935,18 +935,18 @@
 <li>Inability to heavily monitor the agents</li>
 </ul>
 <p>You may be able to bypass any DLP/networking controls by leveraging a combination of self-hosted agents + build artifacts + Microsoft build agents, in this order. </p>
-<p>Example: Use a self-hosted build agent to access a restricted resource in your environment with a pipeline execution, publish artefacts with data you were able to extract, and then use a Microsoft-hosted build agent to exfiltrate those pipeline artefacts.</p>
+<p>Example: Use a self-hosted build agent to access a restricted resource in your environment with a pipeline execution, publish artifacts with data you were able to extract, and then use a Microsoft-hosted build agent to exfiltrate those pipeline artifacts.</p>
 <h2 id="impact">Impact</h2>
-<p>Depending on how the build agents are shared, their lifecycle and network restrictions applied, we can think of a few stories. Examples with some knowdledge of the environment:</p>
+<p>Depending on how the build agents are shared, their lifecycle and network restrictions applied, we can think of a few stories. Examples with some knowledge of the environment:</p>
 <ul>
-<li>I want to exfiltrate data/intellectual property from my enterprise laptop. Email/endpoint DLP controls are in place and actions are easily tied back to me. So I use the enterprise CI/CD Platform to schedule a worflow on execution agent to exfiltrate (all/any) data.</li>
+<li>I want to exfiltrate data/intellectual property from my enterprise laptop. Email/endpoint DLP controls are in place and actions are easily tied back to me. So I use the enterprise CI/CD Platform to schedule a workflow on execution agent to exfiltrate (all/any) data.</li>
 <li>I want to have a cryptomining agent running in an execution agent. I know there are specific detection mechanisms for this, so I use the enterprise CI/CD Platform to schedule a workflow on an execution agent that (1) switches off security tooling, (2) downloads the cryptomining payload and (3) launches the mining client. The process is running in the background, and it persists even after the workflow is finished.</li>
 <li>Same as above, but I also know there is a policy to discard the agent after each workflow is run, so I intentionally make the workflow take several hours so that the cryptomining process stays active.</li>
 </ul>
 <p>If I use any of the initial access vectors (compromised account, malicious insider, open source compromise), I could also:</p>
 <ul>
 <li>Establish persistence on CI/CD execution agents by spawning a privileged container on the host or initiating a reverse shell connection to my Command &amp; Control (C2) server. I use this to continuously monitor and exfiltrate data and credentials from the CI/CD execution agent.</li>
-<li>Establish persistence on CI/CD execution agents by modifying the DLL that defines the CI/CD execution agent service so that the trusted process is running (as expected), but it has been altered to exfiltrate data and credentials anytime a worflow is scheduled there.</li>
+<li>Establish persistence on CI/CD execution agents by modifying the DLL that defines the CI/CD execution agent service so that the trusted process is running (as expected), but it has been altered to exfiltrate data and credentials anytime a workflow is scheduled there.</li>
 <li>I turn off or tamper with security tooling that would allow detection, response and investigations.</li>
 </ul>
 <p>There are others. It's up to the imagination. Things that make it worse:</p>
@@ -964,8 +964,8 @@
 <li>When executing <em>any</em> binary, trusted or untrusted, there is a risk you are running unintended code which will inherit the access your pipeline has</li>
 <li>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</li>
 </ol>
-<p>If you have not gotten got until today, what are the chances you'll get got tomorrow? Well, I couldn't find a reason for this not to be in use today, but I could be missing something. </p>
-<p>In many ways, I feel many platforms already 'got got' (to quote Securiy Weekly News' Doug White). If I was a hacker, I'd be putting my eggs in this basket. </p>
+<p>If you have not 'gotten got' until today, what are the chances you'll 'get got' tomorrow? Well, I couldn't find a reason for this not to be in use today, but I could be missing something. </p>
+<p>In many ways, I feel many platforms already 'got got' (to quote Security Weekly News' Doug White). If I was a hacker, I'd be putting my eggs in this basket. </p>
 <table>
 <thead>
 <tr>
