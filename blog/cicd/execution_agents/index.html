@@ -777,7 +777,7 @@
 <p>There's more to a CI/CD platform than these <a href="https://ytimyno.github.io/blog/protected_resources">recipes we call "pipelines"</a>. These recipes are instruction sets that define workflows and which resources are accessed. But these workflows need to run somewhere.</p>
 <p>CI/CD resources declared in pipelines can be source code repositories, files, pre-configured credentials or vaults, etc. There is a special kind of resource - <em>Build Servers</em>, where the pipeline is scheduled and executed.</p>
 <p>Mental Note 1: <strong>Whether using private, cloud-hosted or SaaS-managed machines, there is no magic, the steps of a CI/CD workflow must be executed in some sort of compute</strong></p>
-<p><img alt="Pipeline Magic" src="../../../images/magic.jpg" /></p>
+<p><img alt="Pipeline Magic" src="../../../images/magic.png" /></p>
 <h2 id="what-does-the-work">What does the work</h2>
 <p>Diagrams can sometimes oversimplify details that mask the workings of a system in not so obvious ways. I've fallen into this trap before. It's easy to accept the status quo which seems to follow the SDLC overarching model of Design -&gt; Code -&gt; Build -&gt; Deploy -&gt; Run.</p>
 <p>Typical (classic) security controls, such as Endpoint Detection and Response (EDR), Data Loss Prevention (DLP), vulnerability scanning, etc, are largely applied to compute in the far ends of this process: User endpoints and running workloads. <strong>It's easy to forget what goes on in between.</strong></p>
