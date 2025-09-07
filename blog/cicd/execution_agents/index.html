@@ -799,8 +799,9 @@
 <p>There is no magic behind it. The secrets, the SSH private key files, the tokens, the 'secretless authentication' files required to access a target, will all be where they can be used to perform the sequence of instructions (steps) that have been passed onto the agent.</p>
 </blockquote>
 <!-- > In other words: When running a pipeline, that pipeline needs to access something. Therefore it needs credentials. -->
-
-<p>What makes this even more involved are the different identity layers:</p>
+<p>A picture is worth a thousand words. Note the different kinds of identities (or resources) that go through the build server. Each will have (directly or indirectly) a set of capabilities on target resources.</p>
+<p><img alt="Identity Cards" src="../../../images/identity_cards.png" /></p>
+<p>What makes this more involved are the different identity layers:</p>
 <ul>
 <li>Pipeline identity</li>
 <li>Identities to access the CI/CD Platform (User/Service, whether local accounts, SaaS-managed or federated)</li>
@@ -812,8 +813,6 @@
 <li>Execution environment (who can access the agent executing the workflow, with what level of privilege - i.e.: having direct access to the host running CI/CD workflows with superuser privileges)</li>
 <li>Runtime workloads (who/what can access the runtime workloads, how can they affect them, directly or indirectly - i.e.: the credentials used to access targets represent a specific level of privilege)</li>
 </ul>
-<p>A picture is worth a thousand words. Note the different kinds of identities (or resources) that go through the build server. Each will have (directly or indirectly) a set of capabilities on target resources.</p>
-<p><img alt="Identity Cards" src="../../../images/identity_cards.png" /></p>
 <p>Because identity is everywhere, this quickly escalates to an <em>"unmanageable mess"</em>. Ultimately, without access, you're limited in what you can do in the environment. Humans be humans, and <strong><em>overtime the tendency is to converge into the path of least resistance.</em></strong></p>
 <blockquote>
 <p>Now is probably a good time to do some introspection on how robust your CI/CD access management is, across users, service accounts and pipelines, against the different system components. Because it'll only get harder.</p>
