@@ -394,9 +394,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-all-identities-and-access-meet" class="md-nav__link">
+  <a href="#identity-access-meeting-point" class="md-nav__link">
     <span class="md-ellipsis">
-      Where all identities and access meet
+      Identity &amp; Access Meeting Point
     </span>
   </a>
   
@@ -662,9 +662,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-all-identities-and-access-meet" class="md-nav__link">
+  <a href="#identity-access-meeting-point" class="md-nav__link">
     <span class="md-ellipsis">
-      Where all identities and access meet
+      Identity &amp; Access Meeting Point
     </span>
   </a>
   
@@ -792,15 +792,16 @@
 </ul>
 <p><img alt="Code execution of the left SDLC view" src="../../../images/shift_view_sdlc.png" /></p>
 <p>Here is how this combination of gotchas starts to make me twitch.</p>
-<h2 id="where-all-identities-and-access-meet">Where all identities and access meet</h2>
+<h2 id="identity-access-meeting-point">Identity &amp; Access Meeting Point</h2>
 <p>CI/CD workflow activities involve interacting with resources, artifacts, workloads, data, services. Authentication as an identity needs to happen, and you'll need to have the right authorization in place. </p>
 <blockquote>
 <p>At some point, all the <strong><em>credentials that allow you to impersonate identities authorized to access resources will be accessible from the build server</em></strong>. </p>
 <p>There is no magic behind it. The secrets, the SSH private key files, the tokens, the 'secretless authentication' files required to access a target, will all be where they can be used to perform the sequence of instructions (steps) that have been passed onto the agent.</p>
 </blockquote>
 <!-- > In other words: When running a pipeline, that pipeline needs to access something. Therefore it needs credentials. -->
-
-<p>What makes this even more involved are the different identity layers:</p>
+<p>A picture is worth a thousand words. Note the different kinds of identities (or resources) that go through the build server. Each will have (directly or indirectly) a set of capabilities on target resources.</p>
+<p><img alt="Identity Cards" src="../../../images/identity_cards.png" /></p>
+<p>What makes this more involved are the different identity layers:</p>
 <ul>
 <li>Pipeline identity</li>
 <li>Identities to access the CI/CD Platform (User/Service, whether local accounts, SaaS-managed or federated)</li>
@@ -812,8 +813,6 @@
 <li>Execution environment (who can access the agent executing the workflow, with what level of privilege - i.e.: having direct access to the host running CI/CD workflows with superuser privileges)</li>
 <li>Runtime workloads (who/what can access the runtime workloads, how can they affect them, directly or indirectly - i.e.: the credentials used to access targets represent a specific level of privilege)</li>
 </ul>
-<p>A picture is worth a thousand words. Note the different kinds of identities (or resources) that go through the build server. Each will have (directly or indirectly) a set of capabilities on target resources.</p>
-<p><img alt="Identity Cards" src="../../../images/identity_cards.png" /></p>
 <p>Because identity is everywhere, this quickly escalates to an <em>"unmanageable mess"</em>. Ultimately, without access, you're limited in what you can do in the environment. Humans be humans, and <strong><em>overtime the tendency is to converge into the path of least resistance.</em></strong></p>
 <blockquote>
 <p>Now is probably a good time to do some introspection on how robust your CI/CD access management is, across users, service accounts and pipelines, against the different system components. Because it'll only get harder.</p>
@@ -917,7 +916,7 @@
 <p>GitHub Action templates are frequently shared (more frequent than with Azure DevOps pipeline templates or even Azure DevOps extensions, in my experience). This may be a by-product of the community around it and their simplicity. These actions and capability extensions should always be treated as untrusted unless proven otherwise (it's just more code written by someone else).</p>
 <p>Mental Note 5: <strong>There are many CI/CD Platforms enabling <em>good</em> users. Striving for more productive and usable workflows sometimes conflicts with the <em>security</em> of the environment and what gets built there</strong></p>
 <h3 id="what-if-i-use-microsoft-hosted-agents">What if I use Microsoft-hosted agents?</h3>
-<p>I don't dislike Microsoft-hosted agents. There are use cases for them. And I have gone as fair as saying "<em>Microsoft-hosted build agents are likely more 'secure' than inadequately managed self-hosted agents</em>".</p>
+<p>I don't dislike Microsoft-hosted agents. There are use cases for them. And I have gone as far as saying "<em>Microsoft-hosted build agents are likely more 'secure' than inadequately managed self-hosted agents</em>".</p>
 <blockquote>
 <p>It's <strong>hard</strong> to manage build agents in a balanced (adequate) way - secure, cost-efficient and performant way.</p>
 </blockquote>
@@ -925,7 +924,7 @@
 <ul>
 <li>No management required (managed by MS)</li>
 <li>Each job runs on a fresh VM that gets destroyed by the end (harder to cross contaminate)</li>
-<li>Sits outside your infrastructure, reducing the likelihood of persistence/lateral movement</li>
+<li>Sits outside your infrastructure (including network), reducing the likelihood of persistence/lateral movement</li>
 <li>Work great as a sandbox for untrusted code workflows </li>
 </ul>
 <p>Reasons not to like them:</p>
